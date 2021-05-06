@@ -1,0 +1,30 @@
+{
+  "name": "threejs-nodejs-exporters",
+  "version": "0.0.1",
+  "description": "Nodejs package for generate threejs models",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InjectIT/threejs-nodejs-exporters.git"
+  },
+  "author": "injectit",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/InjectIT/threejs-nodejs-exporters/issues"
+  },
+  "homepage": "https://github.com/InjectIT/threejs-nodejs-exporters#readme",
+  "dependencies": {
+    "atob": "^2.1.2",
+    "canvas": "^2.7.0",
+    "fflate": "^0.6.10",
+    "node-blob": "0.0.2",
+    "three": "^0.128.0",
+    "xhr2": "^0.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.25.0"
+  }
+}
