@@ -84,3 +84,5 @@ exporter.parse('obj', file, onParse)
 * **buffer** - model file buffer,
 * **onComplete(func)**: callback that will be execute after file parse, providing parsed 3D object
 * **onError(func)**: callback, execute when parse fails
+
+**Important! STLLoader generate and returns BufferGeometry, without materials** 

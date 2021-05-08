@@ -43,14 +43,14 @@ class NodeThreeExporter {
     } else if (format === 'gltf' || format === 'glb') {
       return this.gltfLoader
     } else {
-      console.warn('Unknow loader format! Available formats: gltf, glb, obj, fbx, ustl')
+      console.warn('Unknow loader format! Available formats: gltf, glb, obj, fbx, stl')
     }
   }
 
   toArrayBuffer(buf) {
-    var ab = new ArrayBuffer(buf.length)
-    var view = new Uint8Array(ab)
-    for (var i = 0; i < buf.length; ++i) {
+    const ab = new ArrayBuffer(buf.length)
+    const view = new Uint8Array(ab)
+    for (let i = 0; i < buf.length; ++i) {
       view[i] = buf[i]
     }
     return ab

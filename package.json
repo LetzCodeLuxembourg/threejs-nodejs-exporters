@@ -4,7 +4,7 @@
   "description": "Nodejs package for generate threejs models",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --silent"
   },
   "repository": {
     "type": "git",
