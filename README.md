@@ -75,12 +75,12 @@ exporter.parse('obj', file, onParse)
 * **onError(func)**: callback, execute when generating fails
 
 #### `.load(url, onComplete, onError)`
-* **url** - url to model, available files format: gltf, glb, obj, fbx
+* **url** - url to model, available files format: gltf, glb, obj, fbx, stl
 * **onComplete(func)**: callback that will be execute after file load, providing loaded 3D object
 * **onError(func)**: callback, execute when loading fails
 
 #### `.load(format, buffer, onComplete, onError)`
-* **format(string)** - format of parsing buffer, available: gltf, glb, obj, fbx
+* **format(string)** - format of parsing buffer, available: gltf, glb, obj, fbx, stl
 * **buffer** - model file buffer,
 * **onComplete(func)**: callback that will be execute after file parse, providing parsed 3D object
 * **onError(func)**: callback, execute when parse fails

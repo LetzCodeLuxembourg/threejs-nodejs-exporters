@@ -14,6 +14,7 @@ require('./mockURL')
 
 require('three/examples/js/exporters/GLTFExporter')
 require('three/examples/js/loaders/GLTFLoader')
+require('three/examples/js/loaders/STLLoader')
 require('three/examples/js/loaders/DRACOLoader')
 require('three/examples/js/loaders/FBXLoader')
 require('three/examples/js/loaders/OBJLoader')
@@ -25,6 +26,7 @@ class NodeThreeExporter {
     this.gltfLoader.setDRACOLoader(new THREE.DRACOLoader())
     this.objLoader = new THREE.OBJLoader()
     this.fbxLoader = new THREE.FBXLoader()
+    this.stlLoader = new THREE.STLLoader()
     this.gltfExporter = new THREE.GLTFExporter()
     this.usdzExporter = new USDZExporter()
   }
@@ -36,10 +38,12 @@ class NodeThreeExporter {
       return this.objLoader
     } else if (format === 'fbx') {
       return this.fbxLoader
+    } else if (format === 'stl') {
+      return this.stlLoader
     } else if (format === 'gltf' || format === 'glb') {
       return this.gltfLoader
     } else {
-      console.warn('Unknow loader format! Available formats: gltf, glb, obj, fbx')
+      console.warn('Unknow loader format! Available formats: gltf, glb, obj, fbx, ustl')
     }
   }
 
@@ -52,10 +56,10 @@ class NodeThreeExporter {
     return ab
   }
 
-  prepareData(rawData, type) {
-    if (type === 'obj') {
+  prepareData(rawData, format) {
+    if (format === 'obj') {
       if (typeof rawData === 'string') { return rawData }
-      return rawData.toString ? rawData.toString() : rawData()
+      return rawData.toString ? rawData.toString() : rawData
     }
 
     return Buffer.isBuffer(rawData) ? this.toArrayBuffer(rawData) : rawData
@@ -66,8 +70,7 @@ class NodeThreeExporter {
     const loader = this.getLoader(ext)
     if (!loader) { return }
 
-    const onLoad = loadedModel => {
-      const model = loadedModel.scene || loadedModel
+    const onLoad = model => {
       afterLoad(model)
     }
 
@@ -75,8 +78,8 @@ class NodeThreeExporter {
   }
 
   parse(format, data, onParse, onError) {
-    const onComplete = parsedData => {
-      const model = parsedData.scene || parsedData
+    format = format.toLowerCase()
+    const onComplete = model => {
       onParse(model)
     }
 
@@ -84,7 +87,7 @@ class NodeThreeExporter {
     if (!loader) { return }
     const preparedData = this.prepareData(data, format)
 
-    if (format === 'fbx' || format === 'obj') {
+    if (format === 'fbx' || format === 'obj' || format === 'stl') {
       const parsedData = loader.parse(preparedData)
       onComplete(parsedData)
     } else if (format === 'glb' || format === 'gltf') {
@@ -116,20 +119,3 @@ class NodeThreeExporter {
 }
 
 module.exports = NodeThreeExporter
-
-
-const fs = require('fs')
-
-const rolexBuffer = fs.readFileSync('./rolex.gltf')
-
-const exporter = new NodeThreeExporter()
-
-
-exporter.parse('gltf', rolexBuffer, model => {
-
-  exporter.generate('gltf', model, buffer => {
-
-    fs.writeFileSync('./model.gltf', buffer)
-  })
-})
-
