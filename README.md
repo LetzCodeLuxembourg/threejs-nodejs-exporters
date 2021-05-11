@@ -1,6 +1,6 @@
 # threejs-node-exporters
 
-Nodejs libary to generate gltf/usdz models from threejs objects.
+**threejs-nodejs-exporters** allow you load models and parse ThreeJs data structure and export them to native 3d formats based on NodeJS technology. We removed native browser dependencies and replaced them by substitutes used by NodeJS. 
 
 ## Usage
 
@@ -8,7 +8,7 @@ Nodejs libary to generate gltf/usdz models from threejs objects.
 
 ```javascript
 const THREE = require('three')
-const NodeThreeExporter = require('threejs-node-exporters')
+const NodeThreeExporter = require('@injectit/threejs-nodejs-exporters')
 const fs = require('fs')
 
 //generate cube
@@ -31,7 +31,7 @@ exporter.generate('gltf', cube, onComplete)
 
 ```javascript
 const THREE = require('three')
-const NodeThreeExporter = require('threejs-node-exporters')
+const NodeThreeExporter = require('@injectit/threejs-nodejs-exporters')
 
 const exporter = new NodeThreeExporter()
 
@@ -51,7 +51,7 @@ exporter.load('URL', onLoad)
 
 ```javascript
 const THREE = require('three')
-const NodeThreeExporter = require('threejs-node-exporters')
+const NodeThreeExporter = require('@injectit/threejs-nodejs-exporters')
 const fs = require('fs')
 
 const file = fs.readFileSync('./model.obj')
