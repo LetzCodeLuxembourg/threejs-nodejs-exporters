@@ -1,5 +1,5 @@
 {
-  "name": "threejs-nodejs-exporters",
+  "name": "@injectit/threejs-nodejs-exporters",
   "version": "0.0.1",
   "description": "Nodejs package for generate threejs models",
   "main": "index.js",
@@ -27,5 +27,12 @@
   "devDependencies": {
     "eslint": "^7.25.0",
     "jest": "^26.6.3"
-  }
+  },
+  "keywords": [
+    "3D",
+    "threejs",
+    "ar",
+    "exporter",
+    "node"
+  ]
 }
