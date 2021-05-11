@@ -1,6 +1,6 @@
 {
   "name": "@injectit/threejs-nodejs-exporters",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Nodejs package for generate threejs models",
   "main": "index.js",
   "scripts": {
